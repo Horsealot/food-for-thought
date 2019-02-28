@@ -10,6 +10,8 @@ const port = process.env.PORT || 5003;
 const { createEventAdapter } = require('@slack/events-api');
 const slackEvents = createEventAdapter(config.get('slack.signing_secret'));
 
+const slackService = require('./services/slack.service');
+
 //Configure mongoose's promise to global promise
 mongoose.promise = global.Promise;
 
@@ -48,11 +50,8 @@ app.use('/api', router);
 // Mount the slack handler on a route
 app.use('/slack/events', slackEvents.expressMiddleware());
 // And attach listeners to events by Slack Event "type". See: https://api.slack.com/events/message.im
-slackEvents.on('message', (event)=> {
-    console.log(JSON.stringify(event));
-    console.log(`Received a message event: user ${event.user} in channel ${event.channel} says ${event.text}`);
-});
 // And handle errors (see `errorCodes` export)
+slackEvents.on('message', slackService.handle);
 slackEvents.on('error', console.error);
 
 //Error handlers & middlewares

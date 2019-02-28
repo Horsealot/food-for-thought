@@ -1,0 +1,27 @@
+{
+  "type": "message",
+  "message": {
+    "type": "message",
+    "user": "U1UMDEYAC",
+    "text": "Bonjour Thomas",
+    "client_msg_id": "5dca833c-c166-404a-af53-e2b1ed3cf742",
+    "edited": {
+      "user": "U1UMDEYAC",
+      "ts": "1551368397.000000"
+    },
+    "ts": "1551368330.001400"
+  },
+  "subtype": "message_changed",
+  "hidden": true,
+  "channel": "D1UMDEZA4",
+  "previous_message": {
+    "type": "message",
+    "user": "U1UMDEYAC",
+    "text": "Bonjour tghomas",
+    "client_msg_id": "5dca833c-c166-404a-af53-e2b1ed3cf742",
+    "ts": "1551368330.001400"
+  },
+  "event_ts": "1551368397.001500",
+  "ts": "1551368397.001500",
+  "channel_type": "im"
+}
