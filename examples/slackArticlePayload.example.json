@@ -1,0 +1,39 @@
+{
+  "type": "message",
+  "message": {
+    "type": "message",
+    "user": "U1UMDEYAC",
+    "text": "<https://stackoverflow.com/questions/22312671/setting-environment-variables-for-node-to-retrieve>",
+    "client_msg_id": "a460f996-4143-4806-afef-73ee522eb7b7",
+    "attachments": [
+      {
+        "service_name": "Stack Overflow",
+        "title": "Setting Environment Variables for Node to retrieve",
+        "title_link": "https://stackoverflow.com/questions/22312671/setting-environment-variables-for-node-to-retrieve",
+        "text": "I'm trying to follow a tutorial and it says: \"There are a few ways to load credentials. Loaded from environment variables, Loaded from a JSON file on disk, The keys need to be as follows: USER_...",
+        "fallback": "Stack Overflow: Setting Environment Variables for Node to retrieve",
+        "thumb_url": "https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded",
+        "from_url": "https://stackoverflow.com/questions/22312671/setting-environment-variables-for-node-to-retrieve",
+        "thumb_width": 316,
+        "thumb_height": 316,
+        "service_icon": "https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d",
+        "id": 1,
+        "original_url": "https://stackoverflow.com/questions/22312671/setting-environment-variables-for-node-to-retrieve"
+      }
+    ],
+    "ts": "1551366449.001100"
+  },
+  "subtype": "message_changed",
+  "hidden": true,
+  "channel": "D1UMDEZA4",
+  "previous_message": {
+    "type": "message",
+    "user": "U1UMDEYAC",
+    "text": "<https://stackoverflow.com/questions/22312671/setting-environment-variables-for-node-to-retrieve>",
+    "client_msg_id": "a460f996-4143-4806-afef-73ee522eb7b7",
+    "ts": "1551366449.001100"
+  },
+  "event_ts": "1551366449.001200",
+  "ts": "1551366449.001200",
+  "channel_type": "im"
+}
