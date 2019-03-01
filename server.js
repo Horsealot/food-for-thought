@@ -54,6 +54,8 @@ app.use('/slack/events', slackEvents.expressMiddleware());
 slackEvents.on('message', slackService.handle);
 slackEvents.on('error', console.error);
 
+slackService.updateChannels();
+
 //Error handlers & middlewares
 if(!isProduction) {
     app.use((req, res, err) => {

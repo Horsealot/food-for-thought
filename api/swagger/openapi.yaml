@@ -1,22 +1,13 @@
 # To test with http://editor.swagger.io/
 openapi: 3.0.0
 info:
-  title: KPI Board API
+  title: Food for thought API
   version: 1.0.0
 servers:
 - url: http://localhost:5000/api
-  description: Dev server
+  description: Local server
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
   responses:
-    UnauthorizedError:
-      description: Access token is missing or invalid
-    MissingParam:
-      description: A parameter is missing
     NotFound:
       description: Resource not found
     BadRequest:
@@ -24,201 +15,124 @@ components:
     UnauthorizedAccess:
       description: User cannot access this resource
   schemas:
-    KPI:
-      description: KPI schema
+    MediaMessage:
+      description: Media message
       type: object
       properties:
         id:
-          type: integer
-          description: The KPI ID.
-        name:
           type: string
-          description: KPI's icon.
-        schedule:
+          description: The Message ID.
+        author:
           type: string
-          description: KPI's refresh schedule.
-        type:
+          description: Message author.
+        text:
           type: string
-          description: KPI's stat type.
-        owner:
+          description: Message text content.
+        createdAt:
+          type: string
+          description: Message creation date.
+        media:
           type: object
           properties:
-            type:
-              type: string
-            id:
-              type: string
-        source:
-          type: object
-          properties:
-            type:
-              type: string
-            resource:
-              type: string
-            target:
-              type: string
-    KPIWithStats:
-      description: KPI schema
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The KPI ID.
-        name:
-          type: string
-          description: KPI's icon.
-        schedule:
-          type: string
-          description: KPI's refresh schedule.
-        type:
-          type: string
-          description: KPI's stat type.
-        owner:
-          type: object
-          properties:
-            type:
-              type: string
-            id:
-              type: string
-        source:
-          type: object
-          properties:
-            type:
-              type: string
-            resource:
-              type: string
-            target:
-              type: string
-        stats:
-          type: array
-          items:
-            $ref: '#/components/schemas/Stat'
-    Stat:
-      description: Stat schema
-      type: object
-      properties:
-        _id:
-          type: string
-          description: The KPI ID.
-        value:
-          type: number
-          description: Stat value.
-        delta:
-          type: string
-          description: Delta with previous stat.
-        date:
-          type: string
-          format: date
-          description: Stat crawling date.
-paths:
-  /kpis:
-    post:
-      summary: Create a new KPI
-      tags:
-      - KPI Command
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
+            source:
               type: object
               properties:
                 name:
                   type: string
-                refresh:
+                  description: Source name.
+                icon:
                   type: string
-                type:
+                  description: Source icon.
+                link:
                   type: string
-                  enum: ['number', 'percentage']
-                owner:
-                  type: object
-                  properties:
-                    type:
-                      type: string
-                    id:
-                      type: string
-                source:
-                  type: object
-                  properties:
-                    type:
-                      type: string
-                      enum: [link, ga, mixpanel]
-                    resource:
-                      type: string
-                    target:
-                      type: string
-              required:
-              - name, source
-      responses:
-        '200':
-          description: KPI created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/KPI'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-        '422':
-          $ref: '#/components/responses/MissingParam'
-    get:
-      summary: Get all user's KPI
-      tags:
-      - KPI Query
-      responses:
-        '200':
-          description: KPIs returned
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  kpis:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/KPIWithStats'
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-        '422':
-          $ref: '#/components/responses/MissingParam'
-  /kpis/:id:
-    post:
-      summary: Update a KPI
-      tags:
-      - KPI Command
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
+                  description: Source link.
+            title:
+              type: string
+              description: Media title.
+            text:
+              type: string
+              description: Media text.
+            image:
+              type: string
+              description: Media image.
+            thumb:
+              type: string
+              description: Media thumb image.
+    Channel:
+      description: Media message
+      type: object
+      properties:
+        channelId:
+          type: string
+          description: The Message ID.
+        author:
+          type: string
+          description: Message author.
+        text:
+          type: string
+          description: Message text content.
+        createdAt:
+          type: string
+          description: Message creation date.
+        media:
+          type: object
+          properties:
+            source:
               type: object
               properties:
-                email:
+                name:
                   type: string
-              required:
-              - email
-      responses:
-        '200':
-          description: KPI created
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-        '422':
-          $ref: '#/components/responses/MissingParam'
+                  description: Source name.
+                icon:
+                  type: string
+                  description: Source icon.
+                link:
+                  type: string
+                  description: Source link.
+            title:
+              type: string
+              description: Media title.
+            text:
+              type: string
+              description: Media text.
+            image:
+              type: string
+              description: Media image.
+            thumb:
+              type: string
+              description: Media thumb image.
+paths:
+  /medias:
     get:
-      summary: Get a KPI
+      summary: Get medias messages
       tags:
-      - KPI Query
+      - Messages
       responses:
         '200':
-          description: KPI returned
+          description: Media messages returned
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  kpi:
-                    $ref: '#/components/schemas/KPIWithStats'
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-        '422':
-          $ref: '#/components/responses/MissingParam'
+                  messages:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MediaMessage'
+  /channels:
+    get:
+      summary: Get channels
+      tags:
+      - Channels
+      responses:
+        '200':
+          description: Channels returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  channels:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MediaMessage'

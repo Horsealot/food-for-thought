@@ -12,6 +12,7 @@
   "author": "Thomas Desgrippes",
   "license": "ISC",
   "dependencies": {
+    "@slack/client": "^4.10.0",
     "@slack/events-api": "^2.2.0",
     "config": "^3.0.1",
     "cors": "^2.8.5",

@@ -1,5 +1,7 @@
-// const kpiQuery = require('./kpiQuery');
+const query = require('./query');
+const command = require('./command');
 
 module.exports = (router) => {
-    // kpiQuery(router);
+    query(router);
+    command(router);
 };
