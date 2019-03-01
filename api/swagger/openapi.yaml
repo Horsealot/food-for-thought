@@ -49,9 +49,9 @@ components:
             title:
               type: string
               description: Media title.
-            text:
+            headline:
               type: string
-              description: Media text.
+              description: Article headline.
             image:
               type: string
               description: Media image.

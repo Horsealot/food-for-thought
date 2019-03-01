@@ -14,8 +14,8 @@ const self = {
                     icon: message.attachment.service_icon,
                     link: message.attachment.title_link
                 },
+                headline: message.attachment.text,
                 title: message.attachment.title,
-                text: message.attachment.text,
                 image: message.attachment.image_url,
                 thumb: message.attachment.thumb_url
             }
