@@ -1,3 +1,11 @@
+function formatDate() {
+    // https://codereview.stackexchange.com/questions/184459/getting-the-date-on-yyyymmdd-format
+    function twoDigit(n) { return (n < 10 ? '0' : '') + n; }
+
+    var now = new Date();
+    return '' + twoDigit(now.getDate()) + '-' + twoDigit(now.getMonth() + 1) + '-' + now.getFullYear();
+}
+
 const self = {
     transform: (message) => {
         if(message.attachment) {
@@ -25,7 +33,7 @@ const self = {
         return {
             id: message.messageId,
             author: message.author,
-            createdAt: message.createdAt,
+            createdAt: formatDate(message.createdAt),
             text: message.text,
         }
     }
