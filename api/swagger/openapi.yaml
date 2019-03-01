@@ -106,7 +106,7 @@ paths:
     get:
       summary: Get medias messages
       tags:
-      - Messages
+      - Medias
       responses:
         '200':
           description: Media messages returned
@@ -119,6 +119,23 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/MediaMessage'
+  /medias/{id}:
+    delete:
+      summary: Delete media message
+      tags:
+      - Medias
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: ID of the media message to delete
+      responses:
+        '200':
+          description: Media deleted
+        '404':
+          $ref: '#/components/responses/NotFound'
   /channels:
     get:
       summary: Get channels
@@ -136,3 +153,36 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/MediaMessage'
+  /channels/{id}:
+    post:
+      summary: Activate channel
+      tags:
+      - Channels
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: ID of the channel to activate
+      responses:
+        '200':
+          description: Channel activated
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      summary: Deactivate channel
+      tags:
+      - Channels
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: ID of the channel to deactivate
+      responses:
+        '200':
+          description: Channel deactivated
+        '404':
+          $ref: '#/components/responses/NotFound'

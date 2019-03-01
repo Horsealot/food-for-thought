@@ -8,7 +8,7 @@ const messageTransformer = require('./../transformers/message.transformer');
 
 const self = {
     getMedias: async (req, res) => {
-        Messages.find({'attachment.title': {$exists: true}}).then((messages) => {
+        Messages.find({'attachment.title': {$exists: true}, displayed: true}).sort({'createdAt': -1}).then((messages) => {
             return res.json({
                 messages: messages.map((message) => {
                     return messageTransformer.transform(message);

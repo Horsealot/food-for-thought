@@ -8,6 +8,7 @@ const MessagesSchema = new Schema({
     createdAt: Date,
     author: String,
     messageId: String,
+    displayed: Boolean,
     channel: {
         type: Schema.Types.ObjectId,
         ref: 'Channels'

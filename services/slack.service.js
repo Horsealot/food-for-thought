@@ -25,7 +25,8 @@ const self = {
                 createdAt: new Date(),
                 author: messageData.user,
                 messageId: messageData.client_msg_id,
-                channel: channel._id
+                channel: channel._id,
+                displayed: true
             });
             serieFunctions.push((callback) => {
                 message.save().then((message) => {
@@ -47,7 +48,8 @@ const self = {
             createdAt: new Date(),
             author: messageData.user,
             messageId: messageData.client_msg_id,
-            channel: channel._id
+            channel: channel._id,
+            displayed: true
         });
         serieFunctions.push((callback) => {
             message.save().then((message) => {

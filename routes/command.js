@@ -7,4 +7,7 @@ module.exports = (router) => {
     router.delete('/channels/:id', (req, res, next) => {
         commandController.deactivateChannel(req, res, next);
     });
+    router.delete('/medias/:id', (req, res, next) => {
+        commandController.deleteMedia(req, res, next);
+    });
 };
